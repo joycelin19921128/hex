@@ -1,0 +1,299 @@
+$text-color:#3D1101;
+$sec-text-color: #fff;
+$text-hover-color: #F56C23;
+$main-bgc: #EFE9E7;
+$center: 0 auto;
+$pcW: 1024px;
+$IpadandIph5W:375px;
+$Iph5W:320px;
+@mixin a-none {
+    text-decoration: none;
+}
+@mixin bgc($num) {
+    background-color: rgba(0, 0, 0, $num);
+}
+@mixin bgimg($url) {
+    background-image: $url;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+@mixin burgerMenu {
+    .menu {
+        max-height: 0px;
+        overflow: hidden;
+        transition: max-height 1.5s;
+        margin-top: 1px;
+        position: absolute;
+        z-index: 100;
+        top: 57px;
+        left: 0;
+        right: 0;
+        @include bgc(0.75);
+        li {
+            float: none;
+            border-bottom: 1px dashed $sec-text-color;
+        }
+        a {
+            transition: all o, 3s;
+        }
+    }
+    .showmenu {
+        display: block;
+        float: right;
+        margin: 1em;
+    }
+    .menu-show .menu {
+        max-height: 500px;
+    }
+}
+@mixin betweenIpadandIph5 {
+    @media(max-width: 767px) and (min-width:375px) {
+        @content;
+    }
+}
+@mixin Iph5 {
+    @media (max-width: 320px) {
+        @content;
+    }
+}
+@mixin headersetinSmall {
+    .header {
+        position: fixed;
+        @include bgc(0.75);
+        width: 100%;
+    }
+    .banne-row {
+        padding-top: 56px;
+    }
+}
+@mixin bannerImg($textW) {
+    @include bgimg(url(../assets/img/header_mobile.png));
+    height: 320px;
+    .banner-text {
+        padding: 10px;
+        max-width: $textW;
+        top: 100px;
+    }
+}
+@mixin col-md-4 {
+    width: 30%;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+@mixin col-xs-12 {
+    width: 96%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+@mixin footersetinSmall{
+    .footer-item {
+        margin:$center;
+        @include col-xs-12();
+        &:nth-child(1),           
+        &:nth-child(2), 
+        &:nth-child(3) {
+            float: none;
+            text-align: center;  
+        }        
+    }
+    .contact{
+        margin:20px 70px;
+    }
+
+}
+// .wrap {
+//   margin:$center;
+// }
+/*menu start*/
+
+.header-row {
+    @include bgc(0.75);
+}
+.header {
+    margin:$center;
+    max-width: $pcW;
+    height: 56px;
+    position: relative;
+    color: $sec-text-color;
+}
+h1 {
+    float: left;
+    line-height: 56px;
+    margin-left: 13px;
+    @include bgimg(url(../assets/img/logo_w.png));
+    width: 120px;
+    height: 24px;
+    text-indent: 101%;
+    overflow: hidden;
+    margin-top: 15px;
+}
+.menu {
+    float: right;
+    line-height: 56px;
+    li {
+        margin-right: 30px;
+        float: left;
+        font-size: 18px;
+        a {
+            display: block;
+            @include a-none();
+            color: $sec-text-color;
+            &:hover,
+            &.active {
+                color: $text-hover-color;
+            }
+        }
+    }
+}
+
+.showmenu {
+    display: none;
+    color: $sec-text-color;
+    @include a-none();
+}
+
+@include betweenIpadandIph5 {
+    @include headersetinSmall();
+    @include burgerMenu();
+}
+
+@include Iph5 {
+    @include headersetinSmall();
+    @include burgerMenu();
+}
+/*menu end*/
+
+/*banner start*/
+
+.banner-row {
+    background-color: $text-color;
+}
+
+.banner {
+    margin:$center;
+    @include bgimg(url(../assets/img/header_desktop.png));
+    max-width: $pcW;
+    height: 420px;   
+}
+
+.banner-text {
+    margin:$center;
+    color: $sec-text-color;
+    @include bgc(0.5);
+    padding: 10px;
+    text-align: center;
+    line-height: 40px;
+    max-width: 460px;
+    position: relative;
+    top: 123px;
+    h2 {
+        font-size: 30px;
+    }
+}
+
+.banner-icon {
+    margin: 0 10px;
+}
+
+@include betweenIpadandIph5 {
+    .banner {
+        max-width: $IpadandIph5W;
+        @include bannerImg(250px);
+    }
+}
+
+@include Iph5() {
+    .banner {
+        max-width: $Iph5W;
+        @include bannerImg(220px);
+    }
+}
+
+
+/*banner end*/
+
+/*footer start*/
+
+footer {
+    background-color: $main-bgc;
+}
+
+.footer {
+    max-width: $pcW;
+    margin:$center;
+    li {
+        h3 {
+            font-size: 24px;
+            color: $text-color;
+            padding-top: 50px;
+        }
+        p {
+            color: $text-color;
+            padding-bottom: 50px;
+            padding-top: 16px;
+            line-height: 25px;
+        }
+    }
+}
+
+.footer-item {
+    @include col-md-4();
+    
+    &:nth-child(1) {
+        margin-right: 20px;
+        float: left;
+    }
+    &:nth-child(2) {
+        float: left;
+    }
+    &:nth-child(3) {
+        float: right;
+        margin-top: 54px;
+        text-align: right;
+        padding-bottom: 50px;
+    }
+}
+
+.contact {
+    padding-left: 20px;
+    li {
+        list-style-type: disc;
+        color: $text-color;
+        line-height: 25px;
+    }
+}
+
+.bottom-logo {
+    padding-bottom: 22px;
+}
+
+.media ul li {
+    display: inline;
+    padding-right: 12px;
+}
+
+@include betweenIpadandIph5{
+    .footer{
+        max-width: $IpadandIph5W;
+    }
+    @include footersetinSmall();
+}
+
+@include Iph5 {
+    .footer{
+        max-width: $Iph5W;
+    }
+    @include footersetinSmall();
+}
+
+/*food end*/
+
+/*go-to-top start*/
+
+.go-to-top {
+    color: $text-color;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+}

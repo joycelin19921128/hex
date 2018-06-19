@@ -1,0 +1,189 @@
+$text-color:#3D1101;
+$sec-text-color: #fff;
+$third-color:#FF5E45;
+$fourth-color:#979797;
+$main-bgc: #EFE9E7;
+$center: 0 auto;
+$pcW: 1024px;
+$IpadandIph5W:375px;
+$Iph5W:320px;
+@mixin betweenIpadandIph5 {
+    @media(max-width: 767px) and (min-width:375px) {
+        @content;
+    }
+}
+@mixin Iph5 {
+    @media (max-width: 320px) {
+        @content;
+    }
+}
+@mixin col-md-4($direction) {
+    width: 31.33333%;
+    margin-left: 1%;
+    margin-right: 1%;
+    float: $direction;
+}
+@mixin col-md-6($direction) {
+    width: 48%;
+    margin-left: 1%;
+    margin-right: 1%;
+    float: $direction;
+}
+@mixin col-xs-12 {
+    width: 96%;
+    margin-left: 2%;
+    margin-right: 2%;
+    float: none;
+}
+@mixin loginsetinSmall($W, $loginW, $btnW) {
+    .content {
+        max-width: $W;
+    }
+    form {
+        @include col-xs-12();
+        margin: $center;
+        padding-bottom: 10px;
+    }
+    .login {
+        max-width: $loginW;
+    }
+    .article {
+        display: none;
+    }
+    .btn {
+        display: inline;
+    }
+    .btn-register {
+        color: $sec-text-color;
+        background: $fourth-color;
+        border-radius: 3px;
+        width: $btnW;
+        height: 32px;
+    }
+    .btn-register:hover {
+        background: $third-color;
+    }
+    .btn-sign {
+        color: $sec-text-color;
+        background: $third-color;
+        border-radius: 3px;
+        width: $btnW;
+        height: 32px;
+        display: inline;
+        float: right;
+    }
+    .btn-sign:hover {
+        background: $fourth-color;
+    }
+}
+
+/*login*/
+
+.content-row {
+    background-color: $main-bgc;
+}
+
+.content {
+    max-width: $pcW;
+    margin: $center;
+    padding-bottom: 50px;
+}
+
+.content img {
+    display: block;
+    padding-top: 50px;
+    padding-bottom: 5px;
+    margin: $center;
+}
+
+.content h2 {
+    text-align: center;
+    font-size: 20px;
+    color: $text-color;
+    padding-top: 5px;
+    padding-bottom: 35px;
+}
+
+.login {
+    max-width: 620px;
+    margin: $center;
+    border-top: $third-color 4px solid;
+    background: $main-bgc;
+    box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.16);
+    h3 {
+        font-size: 18px;
+        color: $text-color;
+        text-align: center;
+        font-weight: bold;
+        margin-top: 11px;
+    }
+    input {
+        width: 285px;
+        height: 32px;
+        margin-top: 3px;
+        max-width: 250px;
+    }
+}
+.article {
+    max-width: 285px;
+    font-size: 18px;
+    color: $text-color;
+    text-align: left;
+    margin: 16px 20px 129px 15px;
+    line-height: 22px;
+    @include col-md-6(left);
+}
+
+form {
+    @include col-md-6(left);
+    margin: 0 15px 15px 0;
+    max-width: 250px;
+}
+
+label {
+    color: $text-color;
+}
+
+small {
+    color: $third-color;
+}
+
+#email {
+    margin-bottom: 15px;
+    font-family: Arial, "FontAwesome";
+    max-width: 250px;
+}
+
+#password {
+    font-family: Arial, "FontAwesome";
+}
+
+.btn {
+    text-align: end;
+    margin-top: 74px;
+}
+
+.btn-register,
+.btn-sign {
+    color: $sec-text-color;
+    background: $third-color;
+    border-radius: 3px;
+    width: 125px;
+    height: 32px;
+}
+
+.btn-sign {
+    display: none;
+}
+
+.btn-register:hover {
+    background: $fourth-color;
+}
+
+@include betweenIpadandIph5() {
+    @include loginsetinSmall($IpadandIph5W, 300px, 125px);
+}
+
+@include Iph5() {
+    @include loginsetinSmall($Iph5W, 280px, 100px);
+}

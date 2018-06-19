@@ -1,0 +1,245 @@
+$text-color:#3D1101;
+$sec-text-color: #fff;
+$third-color:#FF5E45;
+$main-bgc: #EFE9E7;
+$center: 0 auto;
+$pcW: 1024px;
+$IpadandIph5W:375px;
+$Iph5W:320px;
+@mixin bgimg($url) {
+    background-image: $url;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+@mixin betweenIpadandIph5 {
+    @media(max-width: 767px) and (min-width:375px) {
+        @content;
+    }
+}
+
+@mixin Iph5 {
+    @media (max-width: 320px) {
+        @content;
+    }
+}
+
+@mixin col-md-4($direction) {
+    width: 31.33333%;
+    margin-left: 1%;
+    margin-right: 1%;
+    float: $direction;
+}
+@mixin col-xs-12 {
+    width: 96%;
+    margin-left: 2%;
+    margin-right: 2%;
+    float: none;
+}
+
+@mixin contentsetinSmall($W) {
+    .content {
+        max-width: $W;
+    }
+    .item-box {
+        @include col-xs-12();
+    }
+    .side-bar {
+        @include col-xs-12();
+    }
+}
+
+/*order*/
+
+.content-row {
+    background-color: $main-bgc;
+}
+
+.content {
+    max-width: $pcW;
+    margin: $center;
+}
+
+.side-bar {
+    width: 24%;
+    padding: 52px 5px 16px 5px;
+    margin-right: 1%;
+    float: left;
+    p {
+        font-size: 20px;
+        color: $text-color;
+        line-height: 32px;
+    }
+    li {
+        color: $text-color;
+        line-height: 32px;
+        border-bottom: $text-color solid 1px;
+    }
+    li:last-child {
+        background-color: $text-color;
+        color: $main-bgc;
+    }
+}
+
+.fa {
+    margin-right: 15px;
+}
+
+.item-box {
+    float: left;
+    padding-top: 48px;
+    width: 75%;
+    /*max-width: 804px;*/
+}
+
+@include betweenIpadandIph5() {
+    @include contentsetinSmall($IpadandIph5W);
+}
+
+@include Iph5() {
+    @include contentsetinSmall($Iph5W);
+}
+
+/*search start*/
+
+.fa-search {
+    color: $sec-text-color;
+}
+
+.search {
+    padding-left: 10px;
+    float: left;
+    width: 300px;
+}
+
+form {
+    width: 300px;
+    display: inline;
+}
+
+#search-btn {
+    padding-right: 0;
+    background-color: $text-color;
+    max-width: 36px;
+    height: 32px;
+    border: $text-color 2px solid;
+    float: left;
+    margin-top: 0;
+}
+
+#search-btn:hover {
+    border: solid 2px $sec-text-color;
+}
+
+#search-area {
+    float: left;
+    border-radius: 0;
+    border: $text-color 2px solid;
+    width: 212px;
+    height: 32px;
+}
+
+.shopping {
+    float: right;
+    padding-top: 8px;
+}
+
+.pay {
+    color: $text-color;
+    border-right: $text-color 1px solid;
+    padding-right: 12px;
+    margin-right: 20px;
+}
+
+.pay:hover {
+    color: $third-color;
+}
+
+.fa-shopping-cart {
+    color: $text-color;
+}
+
+.fa-shopping-cart:hover {
+    color: #333;
+}
+
+@include betweenIpadandIph5() {
+    #search-area {
+        width: 250px;
+    }
+}
+
+@include Iph5() {
+    #search-area {
+        width: 200px;
+    }
+}
+
+/*item-list start*/
+
+.item-list li {
+    @include col-md-4(left);
+    margin-top: 26px;
+    margin-bottom: 30px;
+    text-align: center;
+    box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.16);
+}
+
+.item-img1 {
+    @include bgimg(url(../assets/img/product_1.png));
+    min-height: 120px;
+}
+
+hr {
+    width: 30%;
+    border: 1px solid $text-color;
+    margin-top: 8px;
+    margin-bottom: 20px;
+}
+
+.item {
+    p {
+        text-align: center;
+        font-size: 20px;
+        color: $text-color;
+        margin-top: 11px;
+    }
+    span {
+        font-size: 12px;
+        color: $text-color;
+    }
+}
+
+.btn-add,
+.fa-shopping-cart {
+    color: $third-color;
+    font-size: 100%;
+}
+
+.btn-add {
+    border: 2px solid $third-color;
+    border-radius: 3px;
+    width: 90%;
+    margin: $center;
+    background-color: $main-bgc;
+    margin-top: 16px;
+    margin-bottom: 10px;
+}
+
+.btn-add:hover {
+    background-color: $sec-text-color;
+    color: $third-color;
+}
+
+@include betweenIpadandIph5() {
+    .item-list li {
+        @include col-xs-12();
+    }
+}
+
+@include Iph5() {
+    .item-list li {
+        @include col-xs-12();
+    }
+}

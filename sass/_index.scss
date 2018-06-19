@@ -1,0 +1,408 @@
+$text-color:#3D1101;
+$sec-text-color: #fff;
+$main-bgc: #EFE9E7;
+$center: 0 auto;
+$pcW: 1024px;
+$IpadandIph5W:375px;
+$Iph5W:320px;
+@mixin sec-bgc($num){
+    background-color: rgba(250, 250, 250, $num);
+    
+}
+@mixin bgc($num) {
+    background-color: rgba(0, 0, 0, $num);
+}
+
+@mixin bgimg($url) {
+    background-image: $url;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+@mixin betweenIpadandIph5 {
+    @media(max-width: 767px) and (min-width:375px) {
+        @content;
+    }
+}
+
+@mixin Iph5 {
+    @media (max-width: 320px) {
+        @content;
+    }
+}
+
+@mixin col-md-4($direction) {
+    width: 31.33333%;
+    margin-left: 1%;
+    margin-right: 1%;
+    float: $direction;
+}
+
+@mixin col-md-6($direction) {
+    width: 48%;
+    margin-left: 1%;
+    margin-right: 1%;
+    float: $direction;
+}
+
+@mixin col-xs-12 {
+    width: 96%;
+    margin-left: 2%;
+    margin-right: 2%;
+    float: none;
+}
+
+@mixin circle($fram) {
+    width: $fram;
+    height: $fram;
+    img {
+        margin: $center; // display: block;
+        margin-bottom: 20px;
+        cursor: pointer;
+        border-radius: 100%;
+    }
+}
+@mixin introsetinSmall($W){
+    .intro {
+        max-width: $W;
+    }
+    .line {
+        display: none;
+    }
+}
+@mixin chefsetinSmall($W) {
+    .chef {
+        max-width: $W;
+        li {
+            @include col-xs-12();
+        }
+    }
+    .chef-intro {
+        text-align: center;
+        p {
+            height: auto;
+            padding-bottom: 20px;
+            text-align: center;
+        }
+        h3 {
+            margin-top: 20px;
+        }
+    }
+}
+
+@mixin listensetinSmall($W) {
+    .listen {
+        max-width: $W;
+        li {
+            @include col-xs-12();
+        }
+    }
+}
+
+@mixin reservationsetinSmall($W, $inputW) {
+    .reservation {
+        max-width: $W;
+        li {
+            @include col-xs-12();
+        }
+        .order {
+            padding-left: 10px;
+        }
+    }
+    #name,
+    #contactEmail,
+    #tel,
+    #people {
+        width: $inputW;
+        height: 35px;
+    }
+}
+
+
+
+
+/*intro start*/
+.intro-row {
+    background-color: $main-bgc;
+    padding-bottom: 30px;
+}
+
+.intro {
+    max-width: $pcW;
+    margin: $center;
+    text-align: center;
+}
+
+.line {
+    display: inline-block;
+    position: relative;
+    top: -15px;
+    border: 0;
+    width: 15%;
+    height: 1px;
+    background-color: #979797;
+}
+
+.intro-text {
+    font-size: 20px;
+    color: $text-color;
+    line-height: 32px;
+    display: inline-block;
+}
+
+@include betweenIpadandIph5() {
+   @include introsetinSmall($IpadandIph5W);
+}
+
+@include Iph5() {
+    @include introsetinSmall($Iph5W);
+}
+.about-row {
+    background-color: $main-bgc;
+}
+
+.about {
+    margin: $center;
+    max-width: $pcW;
+    li {
+        @include col-md-4(left);
+    }
+}
+
+.card {
+    h3 {
+        margin-top: 10px;
+        text-align: center;
+        color: $text-color;
+        font-size: 18px;
+        padding: 10px;
+    }
+    p {
+        margin-top: 10px;
+        padding-bottom: 20px;
+        color: $text-color;
+    }
+}
+
+.circle {
+    margin: $center;
+    @include circle(200px);
+}
+
+@include betweenIpadandIph5() {
+    .about {
+        max-width: $IpadandIph5W;
+        li {
+            @include col-xs-12();
+        }
+    }
+}
+
+@include Iph5() {
+    .about {
+        max-width: $Iph5W;
+        li {
+            @include col-xs-12();
+        }
+    }
+}
+
+
+
+
+/*chief start*/
+
+.chef-row {
+    background-color: $text-color;
+}
+
+.chef {
+    margin: $center;
+    max-width: $pcW;
+    li {
+        @include col-md-6(left);
+    }
+}
+
+.chef-img {
+    margin: $center;
+    width: 100%;
+    height: 460px;
+    @include bgimg(url(../assets/img/main_chef_brown.png));
+}
+
+.chef-intro {
+    h3 {
+        font-size: 20px;
+        color: $main-bgc;
+        line-height: 32px;
+        margin-top: 81px;
+    }
+    h4 {
+        color: $main-bgc;
+    }
+    p {
+        color: $main-bgc;
+        margin-top: 16px;
+        max-width: 410px;
+        height: 231px;
+        text-align: left;
+        line-height: 22px;
+    }
+}
+
+@include betweenIpadandIph5() {
+    @include chefsetinSmall($IpadandIph5W);
+}
+
+@include Iph5() {
+    @include chefsetinSmall($Iph5W);
+}
+
+
+
+
+/*listen start*/
+
+.listen-title {
+    font-size: 24px;
+    color: $text-color;
+    text-align: center;
+    background-color: $main-bgc;
+    padding-top: 50px;
+    padding-bottom: 32px;
+}
+
+.listen-row {
+    background-color: $main-bgc;
+}
+
+.listen {
+    max-width: $pcW;
+    margin: $center;
+    li {
+        padding: 10px;
+        @include col-md-4(left);
+    }
+    img {
+        border-radius: 100%;
+    }
+}
+
+.listen-text {
+    margin-left: 13px;
+    h3 {
+        font-size: 18px;
+        color: $text-color;
+        margin-bottom: 22px;
+        padding-top: 20px;
+    }
+    p {
+        color: $text-color;
+        line-height: 24px;
+        margin-bottom: 16px;
+    }
+    span {
+        color: $text-color;
+        line-height: 24px;
+        margin-bottom: 50px;
+        text-align: right;
+        display: block;
+    }
+}
+
+@include betweenIpadandIph5() {
+    @include listensetinSmall($IpadandIph5W);
+}
+
+@include Iph5() {
+    @include listensetinSmall($Iph5W);
+}
+
+
+
+
+/*reservation start*/
+
+.reservation-row {
+    @include sec-bgc(0.7);
+}
+.reservation-title {
+    @include sec-bgc(0.7);
+     text-align: center;
+     font-size: 24px;
+     color: $text-color;
+     padding-top: 50px;
+     line-height: 40px;
+     padding-bottom: 38px;
+ }
+.reservation {
+    max-width: $pcW;
+    margin: $center;
+    li {
+        @include col-md-6(left);
+    }
+}
+.map {
+    margin: $center;
+    padding-bottom: 50px;
+}
+
+#name,
+#contactEmail,
+#tel,
+#people {
+    width: 350px;
+    height: 32px;
+}
+
+label {
+    padding-bottom: 6px;
+    font-size: 14px;
+    color: $text-color;
+}
+
+input {
+    margin-bottom: 12px;
+}
+
+.btn-box {
+    text-align: center;
+    padding-bottom: 50px;
+    .btn {
+        cursor: pointer;
+        max-width: 70px;
+        height: 32px;
+    }
+    
+    .btn:hover {
+        border: 2px solid #333;
+    }
+    .btn-cancle {
+        background: #979797;
+        border-radius: 3px;
+        color: $sec-text-color;
+        margin-right: 11px;
+    }
+    
+    .btn-send {
+        background: #F56C23;
+        border-radius: 3px;
+        color: $sec-text-color;
+    }
+}
+
+
+
+
+
+
+@include betweenIpadandIph5() {
+    @include reservationsetinSmall($IpadandIph5W, 300px);
+}
+
+@include Iph5() {
+    @include reservationsetinSmall($Iph5W, 250px);
+}
+
